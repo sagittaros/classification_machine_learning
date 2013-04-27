@@ -31,9 +31,16 @@ module Candle
 
     module ClassMethods
       def generate_outcomes
+        delete_after = nil
         @candles.each do |c|
           c.outcome = c.calculate_outcome
+          # truncate those after outcome=nil
+          p "#{c.index} outcome is #{c.outcome}"
+          if c.outcome.nil? and delete_after.nil?
+            delete_after = c
+          end
         end
+        @candles = @candles[0..(delete_after.index-1)]
       end
     end
 
