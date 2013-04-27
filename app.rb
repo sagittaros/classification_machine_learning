@@ -1,5 +1,7 @@
 require_relative 'boot'
 
+
+=begin
 EURJPY240 = File.join DATA_PATH, 'EURJPY', 'EURJPY5.csv'
 price_data = CSV.read EURJPY240
 training_data = price_data[930000..-1751]
@@ -39,6 +41,7 @@ end
 Candle::Base.generate_outcomes
 
 p Candle::Base.compare_with_lp_model(lp_model)
+=end
 
 
 
