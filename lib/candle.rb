@@ -1,4 +1,5 @@
 require 'candle/attributes'
+require 'candle/features'
 require 'candle/navigation'
 require 'candle/statistics'
 require 'candle/adapter'

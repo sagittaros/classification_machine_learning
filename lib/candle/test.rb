@@ -24,7 +24,7 @@ module Candle
       v = 0
       q = 0
       @candles.each do |c|
-        predicted = svm_model.predict c.attributes
+        predicted = svm_model.predict c.features
         if predicted == c.outcome
           if predicted == 1
             v += 1
@@ -60,7 +60,7 @@ module Candle
       gg = 0
       @candles.each do |c|
         sum = 0
-        c.attributes.each_with_index do |attr, index|
+        c.features.each_with_index do |attr, index|
           sum += attr * lp_model[index]
         end
         if sum > 1

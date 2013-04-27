@@ -35,12 +35,12 @@ class App
     Candle::Base.generate_outcomes   # generate buy/sell outcomes based on historical data
   end
 
-  def run_svm
+  def run_svm(kernel_type, c)
     load_candles
     svm = Classifier::Libsvm.new(
-        Candle::Base.attribute_matrix,
+        Candle::Base.feature_matrix,
         Candle::Base.outcomes,
-        {kernel_type: RBF, C: 5}
+        {kernel_type: kernel_type, C: c}
     )
     load_candles :test
     p 'Result for LibSVM:'
@@ -50,7 +50,7 @@ class App
   def run_linear_programming
     load_candles
     lp = Classifier::LinearProgramming.new(
-        Candle::Base.attribute_matrix,
+        Candle::Base.feature_matrix,
         Candle::Base.outcomes
     )
     lp.run
@@ -64,10 +64,10 @@ class App
 end
 
 Candle::Base.set_pips_target 100, 0.01
-app = App.new('EURJPY', '60', -4700..-1701, -1700..-1)
+app = App.new('EURJPY', '60', -5700..-1001, -1000..-1)
 app.read_data
 app.run_linear_programming
-app.run_svm
+app.run_svm(RBF, 1)
 
 
 

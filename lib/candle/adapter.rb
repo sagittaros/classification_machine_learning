@@ -1,11 +1,11 @@
 module Candle
   module Adapter
-    def attribute_matrix
-      attribute_matrix = []
+    def feature_matrix
+      feature_matrix = []
       @candles.each do |c|
-        attribute_matrix << c.attributes
+        feature_matrix << c.features
       end
-      attribute_matrix
+      feature_matrix
     end
 
     def outcomes

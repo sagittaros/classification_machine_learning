@@ -3,6 +3,7 @@ module Candle
   class Base
     include Candle::Navigation
     include Candle::Attributes
+    include Candle::Features
     include Candle::Outcome
     extend Candle::Test
     extend Candle::Statistics
