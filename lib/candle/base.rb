@@ -7,6 +7,7 @@ module Candle
     include Candle::Attributes
     include Candle::Outcome
     extend Candle::Statistics
+    extend Candle::Adapter
 
     attr_reader :index, :open, :high, :low, :close, :volume
     attr_accessor :outcome

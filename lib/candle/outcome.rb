@@ -35,7 +35,6 @@ module Candle
         @candles.each do |c|
           c.outcome = c.calculate_outcome
           # truncate those after outcome=nil
-          p "#{c.index} outcome is #{c.outcome}"
           if c.outcome.nil? and delete_after.nil?
             delete_after = c
           end

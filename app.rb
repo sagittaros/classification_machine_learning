@@ -9,4 +9,16 @@ training_data.each_with_index do |row, index|
   Candle::Base.new index, row[2], row[3], row[4], row[5], row[6]
 end
 
+## generate buy/sell outcomes based on historical data
 Candle::Base.generate_outcomes
+
+## Linear Programming
+lp = Classifier::LinearProgramming.new(
+    Candle::Base.attribute_matrix,
+    Candle::Base.outcomes
+)
+
+lp.run
+p lp.get_model
+
+

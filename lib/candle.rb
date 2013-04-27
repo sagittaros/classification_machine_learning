@@ -1,6 +1,7 @@
 require 'candle/attributes'
 require 'candle/navigation'
 require 'candle/statistics'
+require 'candle/adapter'
 require 'candle/outcome'
 require 'candle/test'
 require 'candle/base'
