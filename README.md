@@ -11,7 +11,7 @@ Model trading data using data mining technology and statistics
 
 ## Work Logs
 
-# Day 1
+#### Day 1
 
   * Setup code and directory structures
   * Imported data from MT4
