@@ -1,14 +1,33 @@
 module Candle
   module Statistics
+
     def mean_for(metric)
-      sum = @candles.reduce(0) do |sum, candle|
-        sum + candle.send(metric)
+      if Candle::Base.instance_methods.include? metric
+        vector = @candles.collect {|candle| candle.send metric}.to_scale
+        vector.mean
+      else
+        raise "Metric #{metric} is not defined"
       end
-      sum / @candles.length
     end
 
-    def standard_deviation_for(metric)
+    def sd_for(metric)
+      if Candle::Base.instance_methods.include? metric
+        vector = @candles.collect {|candle| candle.send metric}.to_scale
+        vector.sd
+      else
+        raise "Metric #{metric} is not defined"
+      end
+    end
 
+    def draw_histogram_for(metric)
+      if Candle::Base.instance_methods.include? metric
+        vector = @candles.collect {|candle| candle.send metric}.to_scale
+        rb=ReportBuilder.new
+        rb.add(Statsample::Graph::Histogram.new(vector))
+        rb.save_html(File.join(GRAPH_PATH, "#{metric}-histogram.html"))
+      else
+        raise "Metric #{metric} is not defined"
+      end
     end
   end
 end

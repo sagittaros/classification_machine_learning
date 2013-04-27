@@ -4,7 +4,9 @@ Bundler.require :default
 
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), 'lib'))
 
+require 'csv'
 require 'candle'
 require 'utils'
 
 DATA_PATH = File.join(File.dirname(__FILE__), 'data')
+GRAPH_PATH = File.join(File.dirname(__FILE__), 'graphs')
