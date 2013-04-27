@@ -9,8 +9,12 @@ Model trading data using data mining technology and statistics
   * Multilayer Perceptron
   * Random Forest
 
-## Working Day 1
+## Work Logs
 
-  * Setup directory structures
-  * Import data from MT4
-  * create candle entity
+# Day 1
+
+  * Setup code and directory structures
+  * Imported data from MT4
+  * Created candle entity
+  * Implemented basic statistics using [Statsample](https://github.com/clbustos/statsample) and [RubyVis](https://github.com/clbustos/rubyvis)
+  * Implemented linear programming classification method using [Rglpk](https://github.com/wtaysom/rglpk)
