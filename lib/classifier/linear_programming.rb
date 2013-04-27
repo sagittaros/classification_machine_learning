@@ -1,5 +1,5 @@
 module Classifier
-  class LinearProgramming < Base
+  class LinearProgramming
 
     def initialize(attribute_matrix, outcomes)
       @problem = Rglpk::Problem.new

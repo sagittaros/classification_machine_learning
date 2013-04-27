@@ -15,7 +15,7 @@ module Candle
         bull?? 1 : -1
       end
 
-      def expl_upper_wick_length
+      def upper_wick_length
         if bull?
           @high - @close
         else
@@ -23,7 +23,7 @@ module Candle
         end
       end
 
-      def expl_lower_wick_length
+      def lower_wick_length
         if bull?
           @open - @low
         else
@@ -31,8 +31,8 @@ module Candle
         end
       end
 
-      def expl_wick_length
-        expl_upper_wick_length + expl_lower_wick_length
+      def wick_length
+        upper_wick_length + lower_wick_length
       end
 
       def expl_body_length

@@ -5,6 +5,7 @@ Bundler.require :default
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), 'lib'))
 
 require 'csv'
+require 'svm'
 require 'candle'
 require 'classifier'
 require 'utils'

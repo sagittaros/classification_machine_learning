@@ -17,6 +17,41 @@ module Candle
     # fn = u/(u+v)
     # accuracy = p+v/p+q+u+v
     #
+
+    def compare_with_svm_model(svm_model)
+      p = 0
+      u = 0
+      v = 0
+      q = 0
+      @candles.each do |c|
+        predicted = svm_model.predict c.attributes
+        if predicted == c.outcome
+          if predicted == 1
+            v += 1
+          else
+            p += 1
+          end
+        else
+          if predicted == -1
+            u += 1
+          else
+            q += 1
+          end
+        end
+      end
+      {
+          buy_signals: v+q,
+          sell_signals: p+u,
+          tp: v.to_f/(u+v).to_f,
+          fp: q.to_f/(p+q).to_f,
+          tn: p.to_f/(p+q).to_f,
+          fn: u.to_f/(u+v).to_f,
+          accuracy: (p+v).to_f/(p+v+q+u).to_f,
+          buy_precision: v.to_f/(q+v).to_f,
+          sell_precision: p.to_f/(p+u).to_f
+      }
+    end
+
     def compare_with_lp_model(lp_model)
       p = 0
       u = 0
@@ -44,7 +79,17 @@ module Candle
           gg += 1
         end
       end
-      (p+v).to_f/(p+v+q+u+gg).to_f
+      {
+          buy_signals: v+q,
+          sell_signals: p+u,
+          tp: v.to_f/(u+v).to_f,
+          fp: q.to_f/(p+q).to_f,
+          tn: p.to_f/(p+q).to_f,
+          fn: u.to_f/(u+v).to_f,
+          accuracy: (p+v).to_f/(p+v+q+u).to_f,
+          buy_precision: v.to_f/(q+v).to_f,
+          sell_precision: p.to_f/(p+u).to_f
+      }
     end
 
   end

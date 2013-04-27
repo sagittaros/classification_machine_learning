@@ -5,17 +5,17 @@ module Candle
       base.extend ClassMethods
     end
 
-    # first compare with open, then compare with high/low, if both high/low exceeds PIP_TARGET,
+    # first compare with open, then compare with high/low, if both high/low exceeds self.class.pips_target,
     # get the one with longer distance from current close
     def calculate_outcome
       _outcome = nil # -1 or 1
       compared_candle = self.next
       while _outcome.nil? and !compared_candle.nil? do
-        if compared_candle.open - @close > PIP_TARGET
+        if compared_candle.open - @close > self.class.pips_target
           _outcome = 1
-        elsif @close - compared_candle.open > PIP_TARGET
+        elsif @close - compared_candle.open > self.class.pips_target
           _outcome = -1
-        elsif compared_candle.high - @close > PIP_TARGET and @close - compared_candle.low > PIP_TARGET
+        elsif compared_candle.high - @close > self.class.pips_target and @close - compared_candle.low > self.class.pips_target
           if compared_candle.high - @close > @close - compared_candle.low
             _outcome = 1
           elsif compared_candle.high - @close < @close - compared_candle.low

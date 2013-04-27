@@ -1,7 +1,5 @@
 module Candle
 
-  PIP_TARGET = 150 * 0.01 # 100 pips
-
   class Base
     include Candle::Navigation
     include Candle::Attributes
@@ -13,6 +11,7 @@ module Candle
     attr_reader :index, :open, :high, :low, :close, :volume
     attr_accessor :outcome
     @candles = []
+    @pips_target = 100 * 0.01
 
     def initialize(index, open, high, low, close, volume)
       @index = index # first index should be 0
@@ -26,10 +25,14 @@ module Candle
     end
 
     class << self
-      attr_reader :candles
+      attr_reader :candles, :pips_target
 
       def reset
         @candles = []
+      end
+
+      def set_pips_target(pips, point)
+        @pips_target = pips * point
       end
     end
 
