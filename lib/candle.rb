@@ -1,0 +1,5 @@
+require 'candle/attributes'
+require 'candle/navigation'
+require 'candle/outcome'
+require 'candle/test'
+require 'candle/base'
