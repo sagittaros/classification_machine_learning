@@ -10,6 +10,7 @@ module Candle
     end
 
     module SelfAttributes
+
       def expl_direction
         bull?? 1 : -1
       end

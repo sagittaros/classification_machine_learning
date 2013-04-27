@@ -11,6 +11,7 @@ module Classifier
       @model = []
     end
 
+    ## @rows[index].set_bounds(Rglpk::GLP_LO, 1, 1) because our `c`, the separator, is 1
     def configure_rows
       @rows = @problem.add_rows @attribute_matrix.length
       @outcomes.each_with_index do |outcome, index|
@@ -55,6 +56,10 @@ module Classifier
 
     def get_model
       @model
+    end
+
+    def get_objective
+      @problem.obj.get
     end
 
   end

@@ -1,11 +1,12 @@
 module Candle
 
-  PIP_TARGET = 100 * 0.01 # 100 pips
+  PIP_TARGET = 150 * 0.01 # 100 pips
 
   class Base
     include Candle::Navigation
     include Candle::Attributes
     include Candle::Outcome
+    extend Candle::Test
     extend Candle::Statistics
     extend Candle::Adapter
 
