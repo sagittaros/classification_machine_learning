@@ -1,0 +1,1 @@
+require 'classifier/linear_programming/base'

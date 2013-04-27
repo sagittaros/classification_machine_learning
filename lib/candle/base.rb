@@ -7,7 +7,7 @@ module Candle
     attr_reader :index, :open, :high, :low, :close, :volume
     @candles = []
 
-    RANGE = 40 * 0.01
+    RANGE = 100 * 0.01
 
     def initialize(index, open, high, low, close, volume)
       @index = index # first index should be 0
