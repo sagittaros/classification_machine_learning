@@ -42,13 +42,13 @@ module Candle
       {
           buy_signals: v+q,
           sell_signals: p+u,
+          accuracy: (p+v).to_f/(p+v+q+u).to_f,
+          buy_precision: v.to_f/(q+v).to_f,
+          sell_precision: p.to_f/(p+u).to_f,
           tp: v.to_f/(u+v).to_f,
           fp: q.to_f/(p+q).to_f,
           tn: p.to_f/(p+q).to_f,
-          fn: u.to_f/(u+v).to_f,
-          accuracy: (p+v).to_f/(p+v+q+u).to_f,
-          buy_precision: v.to_f/(q+v).to_f,
-          sell_precision: p.to_f/(p+u).to_f
+          fn: u.to_f/(u+v).to_f
       }
     end
 
@@ -82,13 +82,13 @@ module Candle
       {
           buy_signals: v+q,
           sell_signals: p+u,
+          accuracy: (p+v).to_f/(p+v+q+u).to_f,
+          buy_precision: v.to_f/(q+v).to_f,
+          sell_precision: p.to_f/(p+u).to_f,
           tp: v.to_f/(u+v).to_f,
           fp: q.to_f/(p+q).to_f,
           tn: p.to_f/(p+q).to_f,
-          fn: u.to_f/(u+v).to_f,
-          accuracy: (p+v).to_f/(p+v+q+u).to_f,
-          buy_precision: v.to_f/(q+v).to_f,
-          sell_precision: p.to_f/(p+u).to_f
+          fn: u.to_f/(u+v).to_f
       }
     end
 
